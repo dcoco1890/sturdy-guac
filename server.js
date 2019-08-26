@@ -17,10 +17,10 @@ app.use(express.static("public"));
 
 // handlebars
 app.engine(
-  "handlebars",
-  exphbs({
-    defaultLayout: "main"
-  })
+    "handlebars",
+    exphbs({
+        defaultLayout: "main"
+    })
 );
 app.set("view engine", "handlebars");
 
@@ -33,7 +33,7 @@ require("./routes/htmlRoutes")(app);
 let syncOptions = { force: false };
 
 if (process.env.NODE_ENV === "test") {
-  syncOptions.force = true;
+    syncOptions.force = true;
 }
 
 // syncing sequelize models and then starting express app
@@ -45,6 +45,7 @@ db.sequelize.sync(syncOptions).then(() => {
       PORT
     );
   });
+
 });
 
 module.exports = app;
