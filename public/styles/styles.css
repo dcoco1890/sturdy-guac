@@ -1,3 +1,9 @@
 .list-group-item {
   line-height: 2.5;
 }
+@media only screen and (max-width: 640px) {
+  body {
+    background-color: rgb(81, 91, 77);
+    color: white;
+  }
+}
