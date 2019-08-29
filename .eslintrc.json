@@ -1,10 +1,13 @@
 {
+    "parserOptions": {
+        "ecmaVersion": 2017
+    },
     "env": {
         "browser": true,
         "commonjs": true,
-        "node": true
+        "node": true,
+        "es6": true
     },
-
     "rules": {
         "no-duplicate-case": "error",
         "no-empty": "error",
@@ -21,7 +24,7 @@
         "camelcase": "error",
         "indent": [
             "error",
-            4
+            2
         ],
         "quotes": [
             "error",
@@ -31,6 +34,5 @@
             "error",
             "always"
         ]
-
     }
 }
