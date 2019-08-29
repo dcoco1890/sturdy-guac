@@ -1,3 +1,51 @@
 .list-group-item {
   line-height: 2.5;
 }
+header{
+  position: absolute;
+  background-image: url("../images/adi-goldstein-Yv4Sqy15B24-unsplash.jpg");
+  /* Photo by Adi Goldstein on Unsplash */
+  height: 400px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+}
+#circle {
+  width: 220px;
+  height: 75px;
+  background: white;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  margin: auto;
+  text-align: center;
+}
+h1{
+  margin:auto;
+  vertical-align:middle;
+  padding-top: 10px;
+}
+.summary_div{
+  background-color: rgb(245, 247, 226);
+  margin-top: 440px;
+  text-align: center;
+  position: relative;
+  margin-left: 150px;
+  margin-right: 150px;
+  font-family: 'Amatic SC', cursive;
+  font-size: 25px;
+}
+
+@media only screen and (max-width: 640px) {
+  body {
+    background-color: rgb(81, 91, 77);
+    color: rgb(171, 169, 169);
+  }
+  .summary_div{
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+  #circle{
+    margin-top:
+  }
+}
