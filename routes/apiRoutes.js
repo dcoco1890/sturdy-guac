@@ -1,7 +1,7 @@
 const db = require("../models");
-const fs = require("fs");
+// const fs = require("fs");
 const multer = require("multer");
-const storage = multer.memoryStorage()
+const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
 
@@ -24,7 +24,7 @@ module.exports = app => {
         if (req.file && (req.file.mimetype === "image/jpeg" || req.file.mimetype === "image/png")) {
             // console.log(typeof req.file.buffer.data);
             var newImg = {
-                // id: 1,
+
                 // kind: req.file.mimetype,
                 // name: req.file.originalname,
                 data: req.file.buffer
