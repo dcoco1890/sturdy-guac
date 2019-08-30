@@ -1,5 +1,7 @@
 var $submitBtn = $("#submit");
-
+var preview = $("#preview");
+var fileInput = $("input[type=\"file\"]");
+var sure = $("#u-sure");
 
 function imageSubmit(e) {
     e.preventDefault();
@@ -21,7 +23,7 @@ function imageSubmit(e) {
         timeout: 600000,
         success: function(data) {
 
-            $("#result").text(data);
+
             console.log("SUCCESS : ", data);
             $submitBtn.prop("disabled", false);
 
@@ -36,5 +38,11 @@ function imageSubmit(e) {
     });
 }
 
+fileInput.on("change", function(e) {
+    var url = URL.createObjectURL(e.target.files[0]);
+    preview.attr("src", url);
+    sure.text("Are you sure you want to upload this image?")
+
+});
 
 $submitBtn.on("click", imageSubmit);
