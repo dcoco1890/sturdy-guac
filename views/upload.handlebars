@@ -1,6 +1,27 @@
-<h1 class="mb-2">Upload Image</h1>
- 
-<form action="/api/upload" method="post" enctype="multipart/form-data">
-        <input type="file" accept="image/*" name="photo" >
-        <input type="submit" value="upload">
-</form>
+<div class="container-fluid">
+    <div class="row">
+    <div class="col m-3 p-2">
+    <h1 class="mb-2">Upload Image</h1>
+    <h6 class="text-muted">Browse your device</h6>
+
+        <form action="POST" enctype="multipart/form-data" id="file" >
+        <input type="file" accept="image/*" name="photo" class="btn btn-outline-info" >
+        <button id="submit" class="btn btn-outline-primary">Submit</button>
+        <h4 id="u-sure"></h4>
+        </form>
+        <br>
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" id="preview" style="height: 50%; width: 30%">
+        <br><br>
+        <h1 id="result"></h1>
+
+        <a href="/">← Back To Home</a>
+
+       
+    </div>
+
+    </div>
+ </div>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/upload.js"></script>
