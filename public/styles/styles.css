@@ -1,3 +1,7 @@
+#mapBox {
+  height: 400px;
+}
+
 .list-group-item {
   line-height: 2.5;
 }
@@ -46,6 +50,6 @@ h1{
     margin-right: 40px;
   }
   #circle{
-    margin-top:
+    margin-top: 150px;
   }
 }
