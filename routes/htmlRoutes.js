@@ -31,15 +31,8 @@ module.exports = app => {
     // get request for a specific image. Finds it by ID and renders the images hndlbr 
     app.get("/img/:id", (req, res) => {
         db.Image.findOne({ where: { id: req.params.id } }).then(dbImage => {
-            // var arrayBuff = new Uint8Array(dbImage.data);
-            // var blob = new Blob([arrayBuff], { type: "image/jpeg" });
-            // var urlCreator = window.URL || window.webkitURL;
-            // var imageUrl = urlCreator.createObjectURL(blob);
-            // img.src = imageUrl;
             console.log(dbImage.data);
-            res.render("images", {
-                image: dbImage
-            });
+            res.render("images", { id: req.params.id });
         });
     });
 

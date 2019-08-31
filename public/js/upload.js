@@ -5,12 +5,11 @@ var sure = $("#u-sure");
 
 function imageSubmit(e) {
     e.preventDefault();
-
+    setTimeout(reload, 3000); // added this to reload the page regardless of whether or not the upload was good
     var form = $("#file")[0];
     var data = new FormData(form); // new formdata object to send to ajax
 
     $submitBtn.prop("disabled", true); // disables the submit button after it is pressed
-    console.log(data);
 
     $.ajax({
         type: "POST",
@@ -23,26 +22,30 @@ function imageSubmit(e) {
         timeout: 600000,
         success: function(data) {
 
-
+            $("#result").text(`Success! ${data.name} was uploaded`);
             console.log("SUCCESS : ", data);
             $submitBtn.prop("disabled", false);
-
         },
         error: function(e) {
 
-            $("#result").text(e.responseText);
+            $("#result").text("Needs to be JPG or PNG");
             console.log("ERROR : ", e);
             $submitBtn.prop("disabled", false);
-
         }
     });
 }
 
+// shows preview of image being uploaded
 fileInput.on("change", function(e) {
     var url = URL.createObjectURL(e.target.files[0]);
     preview.attr("src", url);
-    sure.text("Are you sure you want to upload this image?")
+    sure.text("Are you sure you want to upload this image?");
 
 });
+
+function reload() {
+    location.reload();
+}
+
 
 $submitBtn.on("click", imageSubmit);
