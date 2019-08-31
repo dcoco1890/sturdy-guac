@@ -22,13 +22,9 @@ module.exports = app => {
             }
         }).then(dbResponse => {
             // OMG THIS TOOK ME WAY TOO LONG TO FIGURE OUT
-            if (dbResponse !== null) {
-                res.send(dbResponse[0].data);
-            } else {
-                throw "error";
-            }
-
-
+            res.send(dbResponse[0].data);
+        }).catch(error => {
+            res.send(error);
         });
     });
 
@@ -40,11 +36,10 @@ module.exports = app => {
     });
 
     app.post("/api/upload", upload.single("photo"), (req, res) => {
+
         var name = req.file.originalname;
-        console.log(name);
-        req.file.buffer, name
         if (req.file && (req.file.mimetype === "image/jpeg" || req.file.mimetype === "image/png")) {
-            console.log(req.file);
+
             db.Image.create({
                 data: req.file.buffer,
                 name: name
