@@ -6,13 +6,11 @@ module.exports = function(sequelize, DataTypes) {
             autoIncrement: true,
             type: DataTypes.BIGINT(11)
         },
-
-        // having some weird issue with these. Will try to fix after I get images 
-        // to save and load to DB 
-
-        // kind: DataTypes.STRING,
-        // name: DataTypes.STRING,
-        data: DataTypes.BLOB("long")
+        data: {
+            type: DataTypes.BLOB("long"),
+            allowNull: false
+        },
+        name: DataTypes.STRING
 
     }, {
         timestamps: false,

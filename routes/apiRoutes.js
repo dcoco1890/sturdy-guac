@@ -7,31 +7,44 @@ const upload = multer({ storage: storage });
 
 module.exports = app => {
     // Get all examples
+
+
     app.get("/api/examples", (req, res) => {
         db.Example.findAll({}).then(dbExamples => {
             res.json(dbExamples);
         });
     });
 
+    app.get("/api/:id", (req, res) => {
+        db.Image.findAll({
+            where: {
+                id: req.params.id
+            }
+        }).then(dbResponse => {
+            // OMG THIS TOOK ME WAY TOO LONG TO FIGURE OUT
+            res.send(dbResponse[0].data);
+        }).catch(error => {
+            res.send(error);
+        });
+    });
+
     // Create a new example
     app.post("/api/examples", (req, res) => {
         db.Example.create(req.body).then(dbExample => {
-            res.json(dbExample);
+            res.send(dbExample);
         });
     });
 
     app.post("/api/upload", upload.single("photo"), (req, res) => {
-        if (req.file && (req.file.mimetype === "image/jpeg" || req.file.mimetype === "image/png")) {
-            // console.log(typeof req.file.buffer.data);
-            var newImg = {
 
-                // kind: req.file.mimetype,
-                // name: req.file.originalname,
-                data: req.file.buffer
-            };
-            db.Image.create(newImg).then(success => {
+        var name = req.file.originalname;
+        if (req.file && (req.file.mimetype === "image/jpeg" || req.file.mimetype === "image/png")) {
+
+            db.Image.create({
+                data: req.file.buffer,
+                name: name
+            }).then(success => {
                 console.log("image uploaded");
-                // console.log(newImg);
                 res.json(success);
             });
 
