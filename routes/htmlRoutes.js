@@ -4,26 +4,30 @@ module.exports = app => {
 
     // index page
     app.get("/", (req, res) => {
-        db.Example.findAll({}).then(dbExamples => {
+        db.Image.findAll({}).then(dbImage => {
             res.render("index", {
-                msg: "SKREET_art",
-                examples: dbExamples
+                images: dbImage
             });
         });
     });
 
     // map page
     app.get("/map", (req, res) => {
-        db.Example.findAll({}).then(() => {
+        db.Image.findAll({}).then(() => {
             res.render("map", {});
         });
     });
+    
+    // upload page
+    app.get("/upload", (req, res) => {
+        res.render("upload");
+    });
 
-    // example page and pass in an example by id
-    app.get("/example/:id", (req, res) => {
-        db.Example.findOne({ where: { id: req.params.id } }).then(dbExample => {
-            res.render("example", {
-                example: dbExample
+    // gallery page
+    app.get("/gallery", (req, res) => {
+        db.Image.findAll({}).then(dbImages => {
+            res.render("index", {
+                images: dbImages
             });
         });
     });
@@ -32,12 +36,10 @@ module.exports = app => {
     app.get("/img/:id", (req, res) => {
         db.Image.findOne({ where: { id: req.params.id } }).then(dbImage => {
 
-            res.render("images", { id: req.params.id });
+            res.render("images", { 
+                img: dbImage
+            });
         });
-    });
-
-    app.get("/upload", (req, res) => {
-        res.render("upload");
     });
 
     // 404 page for any unmatched routes
