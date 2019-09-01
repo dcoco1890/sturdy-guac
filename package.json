@@ -1,7 +1,7 @@
 {
-  "name": "sturdy-guac",
+  "name": "skreet-art",
   "version": "1.0.0",
-  "description": "Project 2 Starter",
+  "description": "Node Express app using Sequelize and Handlebars",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
