@@ -1,19 +1,10 @@
 const db = require("../models");
-// const fs = require("fs");
 const multer = require("multer");
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
 
 module.exports = app => {
-    // Get all examples
-
-
-    app.get("/api/examples", (req, res) => {
-        db.Example.findAll({}).then(dbExamples => {
-            res.json(dbExamples);
-        });
-    });
 
     app.get("/api/:id", (req, res) => {
         db.Image.findAll({
@@ -25,13 +16,6 @@ module.exports = app => {
             res.send(dbResponse[0].data);
         }).catch(error => {
             res.send(error);
-        });
-    });
-
-    // Create a new example
-    app.post("/api/examples", (req, res) => {
-        db.Example.create(req.body).then(dbExample => {
-            res.send(dbExample);
         });
     });
 
@@ -54,11 +38,4 @@ module.exports = app => {
         }
     });
 
-
-    // Delete an example by id
-    app.delete("/api/examples/:id", (req, res) => {
-        db.Example.destroy({ where: { id: req.params.id } }).then(dbExample => {
-            res.json(dbExample);
-        });
-    });
 };

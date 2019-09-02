@@ -26,7 +26,8 @@ module.exports = app => {
     // gallery page
     app.get("/gallery", (req, res) => {
         db.Image.findAll({}).then(dbImages => {
-            res.render("index", {
+            res.render("gallery-body", {
+                layout: "gallery",
                 images: dbImages
             });
         });
