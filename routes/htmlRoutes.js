@@ -17,7 +17,7 @@ module.exports = app => {
             res.render("map", {});
         });
     });
-    
+
     // upload page
     app.get("/upload", (req, res) => {
         res.render("upload");
@@ -25,10 +25,13 @@ module.exports = app => {
 
     // gallery page
     app.get("/gallery", (req, res) => {
-        db.Image.findAll({}).then(dbImages => {
+        db.Image.findAndCountAll({}).then(dbImages => {
+            console.log(dbImages.count);
+            // console.log(dbImages.rows);
+            console.log(`\n${dbImages.count} pictures found! \n`);
             res.render("gallery-body", {
                 layout: "gallery",
-                images: dbImages
+                images: dbImages.rows
             });
         });
     });
@@ -37,7 +40,7 @@ module.exports = app => {
     app.get("/img/:id", (req, res) => {
         db.Image.findOne({ where: { id: req.params.id } }).then(dbImage => {
 
-            res.render("images", { 
+            res.render("images", {
                 img: dbImage
             });
         });
