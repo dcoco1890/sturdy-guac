@@ -13,6 +13,8 @@ module.exports = app => {
             }
         }).then(dbResponse => {
             // OMG THIS TOOK ME WAY TOO LONG TO FIGURE OUT
+            console.log(dbResponse);
+            console.log(dbResponse[0]);
             res.send(dbResponse[0].data);
         }).catch(error => {
             res.send(error);
