@@ -37,6 +37,24 @@
 		<section class="ftco-section-2">
 			<div class="photograhy">
 				<div class="row no-gutters">
+					<!--start pics here -->
+				{{#each images}}
+					<div class="col-md-4 ftco-animate">
+						<a href=""
+							class="photography-entry img image-popup d-flex justify-content-center align-items-center"><img src=/api/{{this.id}}></a>
+							<div class="overlay"></div>
+							<div class="text text-center">
+
+								<span class="tag">Gilmer St &#38; W Clay St</span>
+							</div>
+						</a>
+					</div>
+				{{/each}}
+
+
+
+
+					
 					<div class="col-md-4 ftco-animate">
 						<a href="images/image_1.jpg"
 							class="photography-entry img image-popup d-flex justify-content-center align-items-center"
@@ -159,6 +177,17 @@
 						</a>
 					</div>
 					<div class="col-md-4 ftco-animate">
+						<a href="images/image_12.jpg"
+							class="photography-entry img image-popup d-flex justify-content-center align-items-center"
+							style="background-image: url(images/image_12.jpg);">
+							<div class="overlay"></div>
+							<div class="text text-center">
+								<h3>Lost Art 12</h3>
+								<span class="tag">The Diamond</span>
+							</div>
+						</a>
+					</div>
+						<div class="col-md-4 ftco-animate">
 						<a href="images/image_12.jpg"
 							class="photography-entry img image-popup d-flex justify-content-center align-items-center"
 							style="background-image: url(images/image_12.jpg);">

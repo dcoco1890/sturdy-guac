@@ -25,10 +25,13 @@ module.exports = app => {
 
     // gallery page
     app.get("/gallery", (req, res) => {
-        db.Image.findAll({}).then(dbImages => {
+        db.Image.findAndCountAll({}).then(dbImages => {
+            console.log(dbImages.count);
+            // console.log(dbImages.rows);
+            console.log(`\n${dbImages.count} pictures found! \n`);
             res.render("gallery-body", {
                 layout: "gallery",
-                images: dbImages
+                images: dbImages.rows
             });
         });
     });
@@ -36,7 +39,6 @@ module.exports = app => {
     // get request for a specific image. Finds it by ID and renders the images hndlbr 
     app.get("/img/:id", (req, res) => {
         db.Image.findOne({ where: { id: req.params.id } }).then(dbImage => {
-            console.log(dbImage);
             res.render("images", {
                 img: dbImage
             });
