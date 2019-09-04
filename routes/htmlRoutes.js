@@ -13,9 +13,9 @@ module.exports = app => {
 
     // map page
     app.get("/map", (req, res) => {
-        db.Image.findAll({}).then(() => {
-            res.render("map", {});
-        });
+
+        res.render("map", {});
+
     });
 
     // upload page
