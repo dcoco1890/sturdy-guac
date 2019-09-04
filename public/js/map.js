@@ -94,7 +94,7 @@ function initAutocomplete() {
 
 function placeMarkerAndPanTo(latLng, name, html, map) {
 
-    let contentString = `<b>Is this where you found that dank SKREET ART??<b><br><button id="position" class="btn btn-outline-danger">Select</button>`;
+    let contentString = `<b>Is this where you found that dank SKREET ART??<b><br><span class="text-muted">if not, pick another spot. Marker indicates location found</span>`;
     let marker = new google.maps.Marker({
         position: latLng,
         map: map
@@ -137,9 +137,12 @@ function imageSubmit(e) {
     } else if (!pickedImage) {
         sure.text("You need to select an image!");
     } else {
+
         setTimeout(reload, 3000);
         var form = $("#file")[0];
         var data = new FormData(form);
+        data.append("lat", lat); //adds the lat and long to the form
+        data.append("long", long);
 
         $submitBtn.prop("disabled", true);
 
