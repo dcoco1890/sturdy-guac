@@ -37,6 +37,10 @@ h1 {
     padding-top: 10px;
 }
 
+h1#map-head {
+    padding: 1.1rem 0;
+}
+
 .summary_div {
     background-color: rgb(245, 247, 226);
     margin-top: 440px;
