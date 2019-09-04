@@ -21,6 +21,14 @@ module.exports = app => {
         });
     });
 
+    // app.post("/api/:loc", (req, res) => {
+    //     db.Image.create({
+    //         where: {
+    //             //lat and long
+    //         }
+    //     });
+    // });
+
     app.post("/api/upload", upload.single("photo"), (req, res) => {
 
         var name = req.file.originalname;
@@ -28,7 +36,9 @@ module.exports = app => {
 
             db.Image.create({
                 data: req.file.buffer,
-                name: name
+                name: name,
+                lat: req.body.lat,
+                long: req.body.long
             }).then(success => {
                 console.log("image uploaded");
                 res.json(success);

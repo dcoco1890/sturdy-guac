@@ -10,6 +10,12 @@ module.exports = function(sequelize, DataTypes) {
             type: DataTypes.BLOB("long"),
             allowNull: false
         },
+        lat: {
+            type: DataTypes.DECIMAL(16, 14)
+        },
+        long: {
+            type: DataTypes.DECIMAL(16, 14)
+        },
         name: DataTypes.STRING
 
     }, {
