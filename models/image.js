@@ -11,10 +11,12 @@ module.exports = function(sequelize, DataTypes) {
             allowNull: false
         },
         lat: {
-            type: DataTypes.DECIMAL(16, 14)
+            type: DataTypes.DECIMAL(16, 14),
+            allowNull: false
         },
         long: {
-            type: DataTypes.DECIMAL(16, 14)
+            type: DataTypes.DECIMAL(16, 14),
+            allowNull: false
         },
         name: DataTypes.STRING
 
