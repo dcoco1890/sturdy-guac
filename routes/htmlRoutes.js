@@ -2,23 +2,21 @@ const db = require("../models");
 
 module.exports = app => {
 
-    // index page
+    // home page
+    // I removed the DB call here, currently we are not pulling any images
+    // here so there was no need.
     app.get("/", (req, res) => {
-        db.Image.findAll({}).then(dbImage => {
-            res.render("index", {
-                images: dbImage
-            });
-        });
+        res.render("index");
+
     });
 
     // map page
     app.get("/map", (req, res) => {
-
         res.render("map", {});
-
     });
 
     // upload page
+    // we might not need this page anymore
     app.get("/upload", (req, res) => {
         res.render("upload");
     });

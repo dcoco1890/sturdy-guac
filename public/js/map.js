@@ -126,7 +126,7 @@ function deleteMarkers() {
     markers = [];
 }
 
-
+initAutocomplete();
 // End map code
 
 
