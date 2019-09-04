@@ -19,6 +19,15 @@ module.exports = app => {
         });
     });
 
+    app.get("/api/allmarkers", (req, res) => {
+        db.Image.findAndCountAll({}).then(dbImages => {
+            var numMarker = dbImages.count;
+            var info = dbImages.rows; // all the information as an array I believe
+            console.log(`\n${numMarker} markers found! \n`);
+            res.json(numMarker, info);
+        });
+    })
+
     // app.post("/api/:loc", (req, res) => {
     //     db.Image.create({
     //         where: {
