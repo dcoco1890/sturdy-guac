@@ -6,6 +6,10 @@ var $submitBtn = $("#submit");
 var preview = $("#preview");
 var fileInput = $("input[type=\"file\"]");
 var sure = $("#u-sure");
+let lat;
+let long;
+let pickedPosition = false;
+let pickedImage = false;
 
 function initAutocomplete() {
 
@@ -26,8 +30,13 @@ function initAutocomplete() {
 
     map.addListener("click", function(event) {
         deleteMarkers();
-        var lat = event.latLng.lat();
-        var long = event.latLng.lng();
+        // changed so they would be more global
+        if (!pickedPosition) {
+            pickedPosition = true;
+            sure.text("");
+        }
+        lat = event.latLng.lat();
+        long = event.latLng.lng();
         console.log(lat, long);
         placeMarkerAndPanTo(event.latLng, "name", "" + event.latLng, map);
     });
@@ -38,12 +47,12 @@ function initAutocomplete() {
     var searchBox = new google.maps.places.SearchBox(input);
     map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
-    map.addListener("bounds_changed", function () {
+    map.addListener("bounds_changed", function() {
         searchBox.setBounds(map.getBounds());
     });
     var markers = [];
 
-    searchBox.addListener("places_changed", function () {
+    searchBox.addListener("places_changed", function() {
         var places = searchBox.getPlaces();
 
         if (places.length == 0) {
@@ -51,7 +60,7 @@ function initAutocomplete() {
         }
 
         var bounds = new google.maps.LatLngBounds();
-        places.forEach(function (place) {
+        places.forEach(function(place) {
             if (!place.geometry) {
                 console.log("Returned place contains no geometry");
                 return;
@@ -85,7 +94,7 @@ function initAutocomplete() {
 
 function placeMarkerAndPanTo(latLng, name, html, map) {
 
-    let contentString = `Is this where you found that dank SKREET ART??<br><button id="gay">gay</button>`;
+    let contentString = `<b>Is this where you found that dank SKREET ART??<b><br><button id="position" class="btn btn-outline-danger">Select</button>`;
     let marker = new google.maps.Marker({
         position: latLng,
         map: map
@@ -100,10 +109,6 @@ function placeMarkerAndPanTo(latLng, name, html, map) {
     map.panTo(latLng);
 
     return marker;
-}
-
-function sendCoordinates(coords) {
-
 }
 
 function setMapOnAll(map) {
@@ -125,41 +130,48 @@ function deleteMarkers() {
 // End map code
 
 
-
 function imageSubmit(e) {
     e.preventDefault();
-    setTimeout(reload, 3000); // added this to reload the page regardless of whether or not the upload was good
-    var form = $("#file")[0];
-    var data = new FormData(form); // new formdata object to send to ajax
+    if (!pickedPosition) {
+        sure.text("You must pick a spot on the map!");
+    } else if (!pickedImage) {
+        sure.text("You need to select an image!");
+    } else {
+        setTimeout(reload, 3000);
+        var form = $("#file")[0];
+        var data = new FormData(form);
 
-    $submitBtn.prop("disabled", true); // disables the submit button after it is pressed
+        $submitBtn.prop("disabled", true);
 
-    $.ajax({
-        type: "POST",
-        enctype: "multipart/form-data",
-        url: "/api/upload",
-        data: data,
-        processData: false,
-        contentType: false,
-        cache: false,
-        timeout: 600000,
-        success: function(data) {
+        $.ajax({
+            type: "POST",
+            enctype: "multipart/form-data",
+            url: "/api/upload",
+            data: data,
+            processData: false,
+            contentType: false,
+            cache: false,
+            timeout: 600000,
+            success: function(data) {
 
-            $("#result").text(`Success! ${data.name} was uploaded`);
-            console.log("SUCCESS : ", data);
-            $submitBtn.prop("disabled", false);
-        },
-        error: function(e) {
+                $("#result").text(`Success! ${data.name} was uploaded`);
+                console.log("SUCCESS : ", data);
+                $submitBtn.prop("disabled", false);
+            },
+            error: function(e) {
 
-            $("#result").text("Needs to be JPG or PNG");
-            console.log("ERROR : ", e);
-            $submitBtn.prop("disabled", false);
-        }
-    });
+                $("#result").text("Needs to be JPG or PNG");
+                console.log("ERROR : ", e);
+                $submitBtn.prop("disabled", false);
+            }
+        });
+    }
+
 }
 
 // shows preview of image being uploaded
 fileInput.on("change", function(e) {
+    pickedImage = true;
     var url = URL.createObjectURL(e.target.files[0]);
     preview.attr("src", url);
     sure.text("Are you sure you want to upload this image?");
