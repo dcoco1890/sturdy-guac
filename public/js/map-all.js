@@ -1,5 +1,6 @@
 function initAutocomplete(arr) {
 
+
     infowindow = new google.maps.InfoWindow({
         size: new google.maps.Size(150, 50)
     });
@@ -15,28 +16,27 @@ function initAutocomplete(arr) {
         myOptions);
 
 
-    map.addListener("click", function(event) {
-        // deleteMarkers();
-        // // changed so they would be more global
-        // if (!pickedPosition) {
-        //     pickedPosition = true;
-        //     sure.text("");
-        // }
-        // lat = event.latLng.lat();
-        // long = event.latLng.lng();
-        // console.log(lat, long);
-        // placeMarkerAndPanTo(event.latLng, "name", "" + event.latLng, map);
-    });
-    console.log(arr);
-    for (var i = 0; i < arr.length; i++) {
-        var lat = parseFloat(arr[i].lat);
-        var long = parseFloat(arr[i].long);
-        var marker = new google.maps.Marker({
-            position: new google.maps.LatLng(lat, long),
+    // displays markers
+
+
+    var markers = arr.map(local => {
+        return new google.maps.Marker({
+            position: new google.maps.LatLng(parseFloat(local.lat), parseFloat(local.long)),
             map: map
         });
-        console.log("hi");
-    }
+    });
+    console.log(markers);
+
+    // for (var i = 0; i < arr.length; i++) {
+    //     var lat = parseFloat(arr[i].lat);
+    //     var long = parseFloat(arr[i].long);
+    //     markers.push(new google.maps.Marker({
+    //         position: new google.maps.LatLng(lat, long),
+    //         map: map,
+    //         title: arr[i].name
+    //     }));
+    // }
+
 
     // input of map
     var input = document.getElementById("pac-input");
@@ -69,12 +69,6 @@ function initAutocomplete(arr) {
                 scaledSize: new google.maps.Size(25, 25)
             };
 
-            markers.push(new google.maps.Marker({
-                map: map,
-                icon: icon,
-                title: place.name,
-                position: place.geometry.location
-            }));
 
             if (place.geometry.viewport) {
                 // Only geocodes have viewport.
@@ -138,9 +132,6 @@ function getMarkers() {
 
 $(document).ready(function() {
 
-
     getMarkers();
-
-
 
 });
