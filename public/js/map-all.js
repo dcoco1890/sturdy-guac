@@ -1,4 +1,4 @@
-function initAutocomplete() {
+function initAutocomplete(arr) {
 
     infowindow = new google.maps.InfoWindow({
         size: new google.maps.Size(150, 50)
@@ -16,18 +16,27 @@ function initAutocomplete() {
 
 
     map.addListener("click", function(event) {
-        deleteMarkers();
-        // changed so they would be more global
-        if (!pickedPosition) {
-            pickedPosition = true;
-            sure.text("");
-        }
-        lat = event.latLng.lat();
-        long = event.latLng.lng();
-        console.log(lat, long);
-        placeMarkerAndPanTo(event.latLng, "name", "" + event.latLng, map);
+        // deleteMarkers();
+        // // changed so they would be more global
+        // if (!pickedPosition) {
+        //     pickedPosition = true;
+        //     sure.text("");
+        // }
+        // lat = event.latLng.lat();
+        // long = event.latLng.lng();
+        // console.log(lat, long);
+        // placeMarkerAndPanTo(event.latLng, "name", "" + event.latLng, map);
     });
-
+    console.log(arr);
+    for (var i = 0; i < arr.length; i++) {
+        var lat = parseFloat(arr[i].lat);
+        var long = parseFloat(arr[i].long);
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(lat, long),
+            map: map
+        });
+        console.log("hi");
+    }
 
     // input of map
     var input = document.getElementById("pac-input");
@@ -37,7 +46,7 @@ function initAutocomplete() {
     map.addListener("bounds_changed", function() {
         searchBox.setBounds(map.getBounds());
     });
-    var markers = [];
+
 
     searchBox.addListener("places_changed", function() {
         var places = searchBox.getPlaces();
@@ -81,7 +90,7 @@ function initAutocomplete() {
 
 function placeMarkerAndPanTo(latLng, name, html, map) {
 
-    let contentString = `<b>Is this where you found that dank SKREET ART??<b><br><span class="text-muted">if not, pick another spot. Marker indicates location found</span>`;
+    let contentString = "";
     let marker = new google.maps.Marker({
         position: latLng,
         map: map
@@ -112,8 +121,26 @@ function deleteMarkers() {
     clearMarkers();
     markers = [];
 }
+
+
+function getMarkers() {
+
+    $.ajax({
+        type: "GET",
+        url: "/api/map"
+
+    }).then(response => {
+        initAutocomplete(response);
+    });
+
+}
+
+
 $(document).ready(function() {
 
-    initAutocomplete();
+
+    getMarkers();
+
+
 
 });
