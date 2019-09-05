@@ -20,13 +20,13 @@ module.exports = app => {
     });
 
     // future project, render specific marker from DB
-    app.get("/map/:id", (req, res) => {
-        db.Image.findOne({ where: { id: req.params.id } }).then(dbImage => {
-            var x = dbImage;
-            console.log(x); //thnis code is nothing
-            res.render("404");
-        });
-    });
+    // app.get("/map/:id", (req, res) => {
+    //     db.Image.findOne({ where: { id: req.params.id } }).then(dbImage => {
+    //         var x = dbImage;
+    //         console.log(x); //thnis code is nothing
+    //         res.render("404");
+    //     });
+    // });
 
     // upload page
     // we might not need this page anymore

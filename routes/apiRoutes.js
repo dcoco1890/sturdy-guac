@@ -6,6 +6,16 @@ const upload = multer({ storage: storage });
 
 module.exports = app => {
 
+    // had to move this up, the api/:id was getting called instead
+    app.get("/api/map", (req, res) => {
+        db.Image.findAndCountAll({}).then(dbImages => {
+            var numMarker = dbImages.count;
+            var info = dbImages.rows; // all the information as an array I believe
+            console.log(`\n${numMarker} markers found! \n`);
+            res.json(info);
+        });
+    });
+
     app.get("/api/:id", (req, res) => {
         db.Image.findAll({
             where: {
@@ -18,16 +28,6 @@ module.exports = app => {
             res.send(error);
         });
     });
-
-    app.get("/api/allmarkers", (req, res) => {
-        db.Image.findAndCountAll({}).then(dbImages => {
-            var numMarker = dbImages.count;
-            var info = dbImages.rows; // all the information as an array I believe
-            console.log(`\n${numMarker} markers found! \n`);
-            res.json(numMarker, info);
-        });
-    })
-
     // app.post("/api/:loc", (req, res) => {
     //     db.Image.create({
     //         where: {
