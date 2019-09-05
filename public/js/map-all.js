@@ -1,8 +1,11 @@
+let bufArr = [];
+let markers = [];
+
 function initAutocomplete(arr) {
 
 
-    infowindow = new google.maps.InfoWindow({
-        size: new google.maps.Size(150, 50)
+    var infowindow = new google.maps.InfoWindow({
+        content: "<b>hq</b><br><br><p>d</p>"
     });
     let myOptions = {
         zoom: 12,
@@ -19,22 +22,35 @@ function initAutocomplete(arr) {
     // displays markers
 
 
-    var markers = arr.map(local => {
-        return new google.maps.Marker({
+    markers = arr.map(local => {
+        bufArr.push(local.data);
+        var marker = new google.maps.Marker({
             position: new google.maps.LatLng(parseFloat(local.lat), parseFloat(local.long)),
-            map: map
+            map: map,
+            title: "hi"
+        });
+        marker.addListener("click", function() {
+            infowindow.open(map, marker);
         });
     });
-    console.log(markers);
+
+
+
+    // marker.addListener("click", function() {
+    //     infowindow.open(map, marker);
+    // });
 
     // for (var i = 0; i < arr.length; i++) {
     //     var lat = parseFloat(arr[i].lat);
     //     var long = parseFloat(arr[i].long);
+
+
     //     markers.push(new google.maps.Marker({
     //         position: new google.maps.LatLng(lat, long),
     //         map: map,
-    //         title: arr[i].name
+
     //     }));
+
     // }
 
 
