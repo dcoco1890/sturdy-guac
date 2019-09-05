@@ -1,16 +1,3 @@
-let map = null;
-let marker = null;
-let infowindow;
-let markers = [];
-var $submitBtn = $("#submit");
-var preview = $("#preview");
-var fileInput = $("input[type=\"file\"]");
-var sure = $("#u-sure");
-let lat;
-let long;
-let pickedPosition = false;
-let pickedImage = false;
-
 function initAutocomplete() {
 
     infowindow = new google.maps.InfoWindow({
@@ -125,65 +112,8 @@ function deleteMarkers() {
     clearMarkers();
     markers = [];
 }
+$(document).ready(function() {
 
-initAutocomplete();
-// End map code
-
-
-function imageSubmit(e) {
-    e.preventDefault();
-    if (!pickedPosition) {
-        sure.text("You must pick a spot on the map!");
-    } else if (!pickedImage) {
-        sure.text("You need to select an image!");
-    } else {
-
-        setTimeout(reload, 3000);
-        var form = $("#file")[0];
-        var data = new FormData(form);
-        data.append("lat", lat); //adds the lat and long to the form
-        data.append("long", long);
-
-        $submitBtn.prop("disabled", true);
-
-        $.ajax({
-            type: "POST",
-            enctype: "multipart/form-data",
-            url: "/api/upload",
-            data: data,
-            processData: false,
-            contentType: false,
-            cache: false,
-            timeout: 600000,
-            success: function(data) {
-
-                $("#result").text(`Success! ${data.name} was uploaded`);
-                console.log("SUCCESS : ", data);
-                $submitBtn.prop("disabled", false);
-            },
-            error: function(e) {
-
-                $("#result").text("Needs to be JPG or PNG");
-                console.log("ERROR : ", e);
-                $submitBtn.prop("disabled", false);
-            }
-        });
-    }
-
-}
-
-// shows preview of image being uploaded
-fileInput.on("change", function(e) {
-    pickedImage = true;
-    var url = URL.createObjectURL(e.target.files[0]);
-    preview.attr("src", url);
-    sure.text("Are you sure you want to upload this image?");
+    initAutocomplete();
 
 });
-
-function reload() {
-    location.reload();
-}
-
-
-$submitBtn.on("click", imageSubmit);
