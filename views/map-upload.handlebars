@@ -1,46 +1,84 @@
-{{!-- <div id="home">
+<style>
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  #description {
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+  }
 
-    <a class="navbar-brand" href="#">sKreet</a>
+  #infowindow-content .title {
+    font-weight: bold;
+  }
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  #infowindow-content {
+    display: none;
+  }
 
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-item nav-link active" href="/">Home<span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link" href="/upload">Upload</a>
-        <a class="nav-item nav-link" href="/gallery">Gallery</a>
-        <a class="nav-item nav-link" href="/map">Map</a>
-      </div>
-    </div>
+  #map #infowindow-content {
+    display: inline;
+  }
 
-  </nav>
+  .pac-card {
+    margin: 10px 10px 0 0;
+    border-radius: 2px 0 0 2px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+    font-family: Roboto;
+  }
 
-  <header>
-    <div id="circle">
-      <h1>sKreet Art</h1>
-    </div>
-  </header>
+  #pac-container {
+    padding-bottom: 12px;
+    margin-right: 12px;
+  }
 
-  <div class="summary_div">
+  .pac-controls {
+    display: inline-block;
+    padding: 5px 11px;
+  }
 
-    <h2 style="margin-bottom: 25px; font-weight:800;">We Welcome You To sKreet Art!</h2>
-    <p>Created by the developers of Sturdy-Guac. sKreet Art is an attempt at cataloging the forgotten art around the
-      city of Richmond, VA.
-      We give you an informative photo gallery and an interactive map allowing you to explore the depths of this richly
-      adorned, luscious metropolitan. Of course
-      we don't condone any illegal activities, but we do like art!</p>
-    <a href="/upload">
-      <p>Help us expand! Add your (or someone else's) street art to our database...</p>
-    </a>
+  .pac-controls label {
+    font-family: Roboto;
+    font-size: 13px;
+    font-weight: 300;
+  }
 
-  </div>
+  #pac-input {
+    background-color: #fff;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+    margin-left: 12px;
+    padding: 0 11px 0 13px;
+    text-overflow: ellipsis;
+    width: 400px;
+  }
 
-</div> --}}
+  #pac-input:focus {
+    border-color: #4d90fe;
+  }
+
+  #title {
+    color: #fff;
+    background-color: #4d90fe;
+    font-size: 25px;
+    font-weight: 500;
+    padding: 6px 12px;
+  }
+
+  #target {
+    width: 345px;
+  }
+</style>
+
 
 <div id="colorlib-page">
   <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
@@ -49,10 +87,10 @@
     <h1 id="colorlib-logo"><a href="/upload"><span class="flaticon-camera"></span>sKreet Art</a></h1>
     <nav id="colorlib-main-menu" role="navigation">
       <ul>
-        <li class="colorlib-active"><a href="/">Home</a></li>
+        <li><a href="/">Home</a></li>
         <li><a href="/gallery">Gallery</a></li>
         <li><a href="/map">Map</a></li>
-        <li><a href="/upload">Upload</a></li>
+        <li class="colorlib-active"><a href="/upload">Upload</a></li>
       </ul>
     </nav>
 
@@ -73,47 +111,55 @@
 
   <div id="colorlib-main">
 
-
-    <header>
-    {{!--Photo by Adi Goldstein on Unsplash--}}
-      <div id="circle">
-        <h1>sKreet Art</h1>
-      </div>
-    </header>
-
-
-
-    <section class="ftco-section-2">
-      <div class="photograhy">
+    <section class="ftco-section-1">
+      <div class="container-fluid p-0">
         <div class="row no-gutters">
-          <div class="summary_div">
-
-            <h2 style="margin-bottom: 25px; font-weight:800;">We Welcome You To sKreet Art!</h2>
-            <p>Created by the developers of Sturdy-Guac. sKreet Art is an attempt at cataloging the forgotten art around
-              the
-              city of Richmond, VA.
-              We give you an informative photo gallery and an interactive map allowing you to explore the depths of this
-              richly
-              adorned, luscious metropolitan. Of course
-              we don't condone any illegal activities, but we do like art!</p>
-            <a href="/upload">
-              <p>Help us expand! Add your (or someone else's) street art to our database...</p>
-            </a>
-
+          <div class="col-md d-flex">
+            <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+            <div id="mapBox" class="bg-light"></div>
           </div>
-
         </div>
+        <div class="row no-gutters mt-4 mx-4">
+          <h3>1 - Click the map to drop a pin</h3>
+          <h5>The pins location should be as close as possible to the actual location of the street art. We want to know
+            what side of the building the piece is on. Be specific!</h5>
+        </div>
+      </div>
     </section>
 
+    <section class="ftco-section-2 mb-4">
 
+      <div class="row no-gutters mx-4">
+        <h3>2 - Choose Image</h3>
+      </div>
 
+      <div class="row no-gutters mx-4">
+        <form action="POST" enctype="multipart/form-data" id="file">
+          <input type="file" accept="image/*" name="photo" class="btn btn-outline-success">
+          <h4 id="u-sure"></h4>
+        </form>
+      </div>
 
+      <div class="row no-gutters mx-4">
+        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" id="preview"
+          style="max-width: 250px;">
+      </div>
 
+      <div class="row no-gutters mx-4">
+        <h4 id="result"></h4>
+      </div>
+      
+      <div class="row no-gutters mx-4">
+        <h3 class="mr-2">3 - Submit results!</h3>
+      </div>
 
+      <div class="row no-gutters mx-4 d-inline-flex justify-content-center">
+        <div class="col-md">
+        <button id="submit" class="btn btn-outline-success">Submit</button>
+        </div>
+      </div>
 
-
-
-
+    </section>
 
     <footer class="ftco-footer ftco-bg-dark ftco-section">
       <div class="container px-md-5">
@@ -181,6 +227,12 @@
     <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
   </svg></div>
 
+
+<!-- google maps API -->
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAk6RgNoC59QTOm8lvzwWh99vfU9pV6VEQ&libraries=places&callback=initAutocomplete"></script>
+
+
 <!-- jquery -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -223,3 +275,4 @@
 <script src="https://cdn.jsdelivr.net/npm/scrollax@1.0.0/scrollax.min.js"
   integrity="sha256-78XlHuE+x1oE3jMGeHoIsRro1NJVjN6q/nzTNyD/y9o=" crossorigin="anonymous"></script>
 <script src="/js/gallery.js"></script>
+<script src="/js/map.js"></script>
