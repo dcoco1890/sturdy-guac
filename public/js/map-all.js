@@ -31,12 +31,12 @@ function initAutocomplete(arr) {
             custom: `/api/${local.id}`
 
         });
-        var infowindow = new google.maps.InfoWindow({
-            content: `${local.id}`
-        });
+        // var infowindow = new google.maps.InfoWindow({
+        //     content: `${local.id}`
+        // });
 
         marker.addListener("click", function() {
-            infowindow.open(map, marker);
+            // infowindow.open(map, marker);
             img.attr("src", this.custom);
         });
     });
