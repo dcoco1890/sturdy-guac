@@ -38,8 +38,6 @@ function imageSubmit(e) {
 // shows preview of image being uploaded
 fileInput.on("change", function(e) {
     var url = URL.createObjectURL(e.target.files[0]);
-    console.log(e);
-    console.log(e.target);
     preview.attr("src", url);
     sure.text("Are you sure you want to upload this image?");
 

@@ -74,20 +74,23 @@
       #target {
         width: 345px;
       }
+      #mapBox{
+        box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, .25);
+      }
     </style>
 <div id="map">
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
-        <div class="col">
-            <h1 id="map-head">SKREET MAP&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" data-toggle="tooltip" title="Location should be as close as possible, we want to know what side of the building the piece is on. Be specific! "><img src="/images/info.svg" ></a></h1>
+        <div class="col p-3">
+            <h2 id="map-head">SKREET MAP&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" data-toggle="tooltip" title="Location should be as close as possible, we want to know what side of the building the piece is on. Be specific! "><img src="/images/info.svg" ></a></h2>
               <input id="pac-input" class="controls" type="text" placeholder="Search Box">
                 <div id="mapBox"></div>
        
          </div>
      </div>
      <div class="row">
-        <div class="col m-3 p-2">
-            <h1 class="mb-2">Upload Image</h1>
+        <div class="col-sm-6 p-3">
+            <h2 class="mb-2">Upload Image</h2>
             <h6 class="text-muted">Browse your device</h6>
 
             <form action="POST" enctype="multipart/form-data" id="file">
@@ -103,11 +106,13 @@
             <h4 id="result"></h4>
 
             <a href="/">← Back To Home</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="/gallery">Gallery</a>
-
-
-
-
                 
+        </div>
+        <div class="col-sm-6 p-3 pr-5">
+          <h4>How it works:</h4>
+          <p style="line-height: 1.6;">Drag and move the map to place a marker on the screen. Try to get your marker as close as possible to where the art is located, e.g, on the side of the building,
+            not just the address. Once a marker is on the screen, that location has been captured. Don't worry though, if you need to change it, just
+            pick a new spot! we only record the coordinates of the marker at the time you hit the submit button </p>
         </div>
 
       </div>
