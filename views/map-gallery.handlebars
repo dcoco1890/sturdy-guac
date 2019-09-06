@@ -2,12 +2,12 @@
 	<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
 
 	<aside id="colorlib-aside" role="complementary" class="js-fullheight text-center">
-		<h1 id="colorlib-logo"><a href="/mapupload"><span class="flaticon-camera"></span>sKreet Art</a></h1>
+		<h1 id="colorlib-logo"><a href="/upload"><span class="flaticon-camera"></span>sKreet Art</a></h1>
 		<nav id="colorlib-main-menu" role="navigation">
 			<ul>
 				<li><a href="/">Home</a></li>
-				<li class="colorlib-active"><a href="/gallery">Gallery</a></li>
-				<li><a href="/map">Map</a></li>
+				<li><a href="/gallery">Gallery</a></li>
+				<li class="colorlib-active"><a href="/map">Map</a></li>
 				<li><a href="/upload">Upload</a></li>
 			</ul>
 		</nav>
@@ -30,12 +30,23 @@
 
 	<div id="colorlib-main">
 
+		<section class="ftco-section-1">
+			<div class="container-fluid p-0">
+				<div class="row no-gutters">
+					<div class="col-md d-flex">
+						<input id="pac-input" class="controls" type="text" placeholder="Search Box">
+						<div id="mapBox" class="bg-light"></div>
+					</div>
+				</div>
+			</div>
+		</section>
 
 		<section class="ftco-section-2">
 			<div class="photograhy">
 				<div class="row no-gutters">
-					<!--start pics here -->
-					{{#each images}}
+
+					<!-- for loop showing all images in database -->
+					{{!-- {{#each images}}
 					<div class="col-md-4 ftco-animate">
 						<a href=/api/{{this.id}}
 							class="photography-entry img image-popup d-flex justify-content-center align-items-center"
@@ -47,8 +58,24 @@
 							</div>
 						</a>
 					</div>
-					{{/each}}
+					{{/each}} --}}
+
+                    <!-- slightly broken, not reading correct background-image url -->
+					<div class="col-md ftco-animate">
+						<img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+						    class="photography-entry img image-popup d-flex justify-content-center align-items-center"
+							style="background-image: url(data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7)"
+							id="preview">
+							<div class="overlay"></div>
+							<div class="text text-center">
+								<h3><!--insert image title/number here--></h3>
+								<span class="tag"><!-- insert address/cross streets/closest landmark --></span>
+							</div>
+					</div>
+                    
+
 				</div>
+			</div>
 		</section>
 
 		<footer class="ftco-footer ftco-bg-dark ftco-section">
@@ -117,6 +144,12 @@
 		<circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
 			stroke="#F96D00" /></svg></div>
 
+
+<!-- google maps API -->
+<script
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAk6RgNoC59QTOm8lvzwWh99vfU9pV6VEQ&libraries=places&callback=initAutocomplete"></script>
+
+
 <!-- jquery -->
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"
 	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -159,3 +192,4 @@
 <script src="https://cdn.jsdelivr.net/npm/scrollax@1.0.0/scrollax.min.js"
 	integrity="sha256-78XlHuE+x1oE3jMGeHoIsRro1NJVjN6q/nzTNyD/y9o=" crossorigin="anonymous"></script>
 <script src="/js/gallery.js"></script>
+<script src="/js/map-all.js"></script>
