@@ -1,12 +1,11 @@
-let bufArr = [];
 let markers = [];
+let img = $("#preview");
+
 
 function initAutocomplete(arr) {
 
 
-    var infowindow = new google.maps.InfoWindow({
-        content: "<b>hq</b><br><br><p>d</p>"
-    });
+
     let myOptions = {
         zoom: 12,
         center: new google.maps.LatLng(37.5407, -77.4360),
@@ -23,14 +22,22 @@ function initAutocomplete(arr) {
 
 
     markers = arr.map(local => {
-        bufArr.push(local.data);
+
+
+
         var marker = new google.maps.Marker({
             position: new google.maps.LatLng(parseFloat(local.lat), parseFloat(local.long)),
             map: map,
-            title: "hi"
+            custom: `/api/${local.id}`
+
         });
+        var infowindow = new google.maps.InfoWindow({
+            content: `${local.id}`
+        });
+
         marker.addListener("click", function() {
             infowindow.open(map, marker);
+            img.attr("src", this.custom);
         });
     });
 
