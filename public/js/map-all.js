@@ -42,25 +42,6 @@ function initAutocomplete(arr) {
     });
 
 
-
-    // marker.addListener("click", function() {
-    //     infowindow.open(map, marker);
-    // });
-
-    // for (var i = 0; i < arr.length; i++) {
-    //     var lat = parseFloat(arr[i].lat);
-    //     var long = parseFloat(arr[i].long);
-
-
-    //     markers.push(new google.maps.Marker({
-    //         position: new google.maps.LatLng(lat, long),
-    //         map: map,
-
-    //     }));
-
-    // }
-
-
     // input of map
     var input = document.getElementById("pac-input");
     var searchBox = new google.maps.places.SearchBox(input);
