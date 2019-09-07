@@ -1,30 +1,67 @@
 <div id="colorlib-page">
-	<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
 
-	<aside id="colorlib-aside" role="complementary" class="js-fullheight text-center">
-		<h1 id="colorlib-logo"><a href="/upload"><span class="flaticon-camera"></span>sKreet Art</a></h1>
-		<nav id="colorlib-main-menu" role="navigation">
-			<ul>
-				<li><a href="/">Home</a></li>
-				<li><a href="/gallery">Gallery</a></li>
-				<li class="colorlib-active"><a href="/map">Map</a></li>
-				<li><a href="/upload">Upload</a></li>
-			</ul>
-		</nav>
+  <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
 
-		<div class="colorlib-footer">
-			<h3>Check out our Repo!</h3>
-			<div class="d-flex justify-content-center">
-				<ul class="d-flex align-items-center">
+  <aside id="colorlib-aside" role="complementary" class="js-fullheight text-center">
+    <h1 id="colorlib-logo"><a href="/upload"><span class="flaticon-camera"></span>sKreet Art</a></h1>
+    <nav id="colorlib-main-menu" role="navigation">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/gallery">Gallery</a></li>
+        <li class="colorlib-active"><a href="/map">Map</a></li>
+        <li><a href="/upload">Upload</a></li>
+      </ul>
+    </nav>
 
-					<li class="d-flex align-items-center jusitfy-content-center"><a
-							href="https://github.com/dcoco1890/sturdy-guac" target="_blank"><i
-								class="icon-github"></i></a></li>
-				</ul>
-			</div>
-		</div>
-	</aside>
-	<!-- END COLORLIB-ASIDE -->
+<!-- user log in form -->
+    {{!-- <div class="row no-gutters my-5">
+                <div class="col-md text-center">
+
+                    <form>
+                        {{#if user}}
+                        <div class="form login-form">
+                            <p>Logged in as <strong>{{user.username}}</strong></p>
+                            <div class="buttons">
+                                <a class="button logout" href="#">Logout</a>
+                            </div>
+                        </div>
+                        {{else}}
+                        <div class="form login-form">
+                            <input type="text" name="username" placeholder="username" class="border rounded mb-2">
+                            <input type="text" name="password" placeholder="password" class="border rounded mb-2">
+                            <div class="buttons">
+                                <button class="button login">Login</button>
+                                <a class="button signup" href="/register">Signup</a>
+                            </div>
+                        </div>
+                        <div class="form signup-form">
+                            <input type="text" name="username" placeholder="username" class="border rounded mb-2">
+                            <input type="text" name="email" placeholder="email" class="border rounded mb-2">
+                            <input type="text" name="password" placeholder="password" class="border rounded mb-2">
+                            <div class="buttons">
+                                <a class="button login" href="/">Login</a>
+                                <button class="button signup">Signup</button>
+                            </div>
+                        </div>
+                        {{/if}}
+                    </form>
+
+                </div>
+            </div> --}}
+
+
+
+
+    <div class="colorlib-footer">
+      <h3>Check out our Repo!</h3>
+      <div class="d-flex justify-content-center">
+        <ul class="d-flex align-items-center">
+          <li class="d-flex align-items-center jusitfy-content-center"><a
+              href="https://github.com/dcoco1890/sturdy-guac" target="_blank"><i class="icon-github"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </aside> <!-- END COLORLIB-ASIDE -->
 
 
 
@@ -76,7 +113,7 @@
 			</div>
 		</footer>
 	</div><!-- END COLORLIB-MAIN -->
-
+</div><!-- END COLORLIB-PAGE -->
 
 <!-- loader -->
 <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
@@ -131,5 +168,7 @@
 <!-- scrollax -->
 <script src="https://cdn.jsdelivr.net/npm/scrollax@1.0.0/scrollax.min.js"
 	integrity="sha256-78XlHuE+x1oE3jMGeHoIsRro1NJVjN6q/nzTNyD/y9o=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="/js/form.js"></script>
 <script src="/js/gallery.js"></script>
 <script src="/js/map-all.js"></script>
