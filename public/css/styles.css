@@ -49,10 +49,6 @@ h1#map-head {
     font-weight: 700;
 }
 
-h4#u-sure {
-    padding: 10px;
-}
-
 @media only screen and (max-width: 640px) {
     .summary_div {
         margin-left: 40px;
