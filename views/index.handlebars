@@ -1,129 +1,113 @@
-{{!-- <div id="home">
+<div id="colorlib-page">
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
 
-    <a class="navbar-brand" href="#">sKreet</a>
+  <aside id="colorlib-aside" role="complementary" class="js-fullheight text-center">
+    <h1 id="colorlib-logo"><a href="/upload"><span class="flaticon-camera"></span>sKreet Art</a></h1>
+    <nav id="colorlib-main-menu" role="navigation">
+      <ul>
+        <li class="colorlib-active"><a href="/">Home</a></li>
+        <li><a href="/gallery">Gallery</a></li>
+        <li><a href="/map">Map</a></li>
+        <li><a href="/upload">Upload</a></li>
+      </ul>
+    </nav>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+<!-- user log in form -->
+    {{!-- <div class="row no-gutters my-5">
+                <div class="col-md text-center">
 
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-item nav-link active" href="/">Home<span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link" href="/upload">Upload</a>
-        <a class="nav-item nav-link" href="/gallery">Gallery</a>
-        <a class="nav-item nav-link" href="/map">Map</a>
+                    <form>
+                        {{#if user}}
+                        <div class="form login-form">
+                            <p>Logged in as <strong>{{user.username}}</strong></p>
+                            <div class="buttons">
+                                <a class="button logout" href="#">Logout</a>
+                            </div>
+                        </div>
+                        {{else}}
+                        <div class="form login-form">
+                            <input type="text" name="username" placeholder="username" class="border rounded mb-2">
+                            <input type="text" name="password" placeholder="password" class="border rounded mb-2">
+                            <div class="buttons">
+                                <button class="button login">Login</button>
+                                <a class="button signup" href="/register">Signup</a>
+                            </div>
+                        </div>
+                        <div class="form signup-form">
+                            <input type="text" name="username" placeholder="username" class="border rounded mb-2">
+                            <input type="text" name="email" placeholder="email" class="border rounded mb-2">
+                            <input type="text" name="password" placeholder="password" class="border rounded mb-2">
+                            <div class="buttons">
+                                <a class="button login" href="/">Login</a>
+                                <button class="button signup">Signup</button>
+                            </div>
+                        </div>
+                        {{/if}}
+                    </form>
+
+                </div>
+            </div> --}}
+
+    <div class="colorlib-footer">
+      <h3>Check out our Repo!</h3>
+      <div class="d-flex justify-content-center">
+        <ul class="d-flex align-items-center">
+          <li class="d-flex align-items-center jusitfy-content-center"><a
+              href="https://github.com/dcoco1890/sturdy-guac" target="_blank"><i class="icon-github"></i></a></li>
+        </ul>
       </div>
     </div>
+  </aside> <!-- END COLORLIB-ASIDE -->
 
-  </nav>
 
-  <header>
-    <div id="circle">
-      <h1>sKreet Art</h1>
-    </div>
-  </header>
+  <div id="colorlib-main">
+    <header>
+      {{!--Photo by Adi Goldstein on Unsplash--}}
+      <div id="circle">
+        <h1>sKreet Art</h1>
+      </div>
+    </header>
 
-  <div class="summary_div">
+    <section class="ftco-section-2 mb-4">
+      <div class="photograhy">
+        <div class="row no-gutters">
+          <div class="summary_div">
 
-    <h2 style="margin-bottom: 25px; font-weight:800;">We Welcome You To sKreet Art!</h2>
-    <p>Created by the developers of Sturdy-Guac. sKreet Art is an attempt at cataloging the forgotten art around the
-      city of Richmond, VA.
-      We give you an informative photo gallery and an interactive map allowing you to explore the depths of this richly
-      adorned, luscious metropolitan. Of course
-      we don't condone any illegal activities, but we do like art!</p>
-    <a href="/upload">
-      <p>Help us expand! Add your (or someone else's) street art to our database...</p>
-    </a>
-
-  </div>
-
-</div> --}}
-<div id="colorlib-main">
-  <header>
-    {{!--Photo by Adi Goldstein on Unsplash--}}
-    <div id="circle">
-      <h1>sKreet Art</h1>
-    </div>
-  </header>
-
-  <section class="ftco-section-2">
-    <div class="photograhy">
-      <div class="row no-gutters">
-        <div class="summary_div" style="height: 44vh;">
-
-          <h2 style="margin-bottom: 25px; font-weight:800;">We Welcome You To sKreet Art!</h2>
-          <p>Created by the developers of Sturdy-Guac. sKreet Art is an attempt at cataloging the forgotten art around
-            the
-            city of Richmond, VA.
-            We give you an informative photo gallery and an interactive map allowing you to explore the depths of this
-            richly
-            adorned, luscious metropolitan. Of course
-            we don't condone any illegal activities, but we do like art!</p>
-          <a href="/upload">
-            <p>Help us expand! Add your (or someone else's) street art to our database...</p>
-          </a>
-
+            <h2 style="margin-bottom: 25px; font-weight:800;">We Welcome You To sKreet Art!</h2>
+            <p>Created by the developers of Sturdy-Guac. sKreet Art is an attempt at cataloging the forgotten art around
+              the
+              city of Richmond, VA.
+              We give you an informative photo gallery and an interactive map allowing you to explore the depths of this
+              richly
+              adorned, luscious metropolitan. Of course
+              we don't condone any illegal activities, but we do like art!</p>
+            <a href="/upload">
+              <p>Help us expand! Add your (or someone else's) street art to our database...</p>
+            </a>
+          </div>
         </div>
+    </section>
 
-      </div>
 
-      <div class="row no-gutters">
-
-        <form>
-          {{#if user}}
-          <div class="form login-form">
-            <p>Logged in as <strong>{{user.username}}</strong></p>
-            <div class="buttons">
-              <a class="button logout" href="#">Logout</a>
-            </div>
+    <footer class="ftco-footer ftco-bg-dark ftco-section text-center" style="padding: 2em 0;">
+      <div class="container px-md-5">
+        <div class="row">
+          <div class="col-md-12">
+            <p>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              Copyright &copy;
+              <script>document.write(new Date().getFullYear());</script> All rights reserved | This
+              template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
+                target="_blank">Colorlib</a>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
           </div>
-          {{else}}
-          <div class="form login-form">
-            <input type="text" name="username" placeholder="username">
-            <input type="text" name="password" placeholder="password">
-            <div class="buttons">
-              <button class="button login">Login</button>
-              <a class="button signup" href="/register">Signup</a>
-            </div>
-          </div>
-          <div class="form signup-form">
-            <input type="text" name="username" placeholder="username">
-            <input type="text" name="email" placeholder="email">
-            <input type="text" name="password" placeholder="password">
-            <div class="buttons">
-              <a class="button login" href="/">Login</a>
-              <button class="button signup">Signup</button>
-            </div>
-          </div>
-          {{/if}}
-        </form>
-
-
-      </div>
-
-
-  </section>
-  <footer class="ftco-footer ftco-bg-dark ftco-section text-center" style="padding: 2em 0;">
-    <div class="container px-md-5">
-      <div class="row">
-        <div class="col-md-12">
-          <p>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            Copyright &copy;
-            <script>document.write(new Date().getFullYear());</script> All rights reserved | This
-            template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
-              target="_blank">Colorlib</a>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-          </p>
         </div>
       </div>
-    </div>
-  </footer>
-</div><!-- END COLORLIB-MAIN -->
-
+    </footer>
+  </div><!-- END COLORLIB-MAIN -->
+</div><!-- END COLORLIB-PAGE -->
 
 <!-- loader -->
 <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
@@ -172,6 +156,6 @@
 <!-- scrollax -->
 <script src="https://cdn.jsdelivr.net/npm/scrollax@1.0.0/scrollax.min.js"
   integrity="sha256-78XlHuE+x1oE3jMGeHoIsRro1NJVjN6q/nzTNyD/y9o=" crossorigin="anonymous"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-    <script src="/js/form.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script src="/js/form.js"></script>
 <script src="/js/gallery.js"></script>
