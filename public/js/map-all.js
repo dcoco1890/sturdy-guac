@@ -86,25 +86,6 @@ function initAutocomplete(arr) {
     });
 }
 
-function placeMarkerAndPanTo(latLng, name, html, map) {
-
-    let contentString = "";
-    let marker = new google.maps.Marker({
-        position: latLng,
-        map: map
-    });
-    google.maps.event.addListener(marker, "click", function() {
-        infowindow.setContent(contentString);
-        infowindow.open(map, marker);
-        markers.push(marker);
-    });
-    google.maps.event.trigger(marker, "click");
-
-    map.panTo(latLng);
-
-    return marker;
-}
-
 function setMapOnAll(map) {
     for (var i = 0; i < markers.length; i++) {
         markers[i].setMap(map);

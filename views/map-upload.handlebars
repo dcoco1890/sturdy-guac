@@ -78,41 +78,10 @@
     width: 345px;
   }
 </style>
-
-
-<div id="colorlib-page">
-  <a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
-
-  <aside id="colorlib-aside" role="complementary" class="js-fullheight text-center">
-    <h1 id="colorlib-logo"><a href="/upload"><span class="flaticon-camera"></span>sKreet Art</a></h1>
-    <nav id="colorlib-main-menu" role="navigation">
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/gallery">Gallery</a></li>
-        <li><a href="/map">Map</a></li>
-        <li class="colorlib-active"><a href="/upload">Upload</a></li>
-      </ul>
-    </nav>
-
-    <div class="colorlib-footer">
-      <h3>Check out our Repo!</h3>
-      <div class="d-flex justify-content-center">
-        <ul class="d-flex align-items-center">
-
-          <li class="d-flex align-items-center jusitfy-content-center"><a
-              href="https://github.com/dcoco1890/sturdy-guac" target="_blank"><i class="icon-github"></i></a></li>
-        </ul>
-      </div>
-    </div>
-  </aside>
-  <!-- END COLORLIB-ASIDE -->
-
-
-
-  <div id="colorlib-main">
+<div id="colorlib-main">
 
     <section class="ftco-section-1">
-      <div class="container-fluid p-0">
+      <div class="container-fluid p-0 mb-4">
         <div class="row no-gutters">
           <div class="col-md d-flex">
             <input id="pac-input" class="controls" type="text" placeholder="Search Box">
@@ -121,22 +90,22 @@
         </div>
         <div class="row no-gutters mt-4 mx-4">
           <h4>1 - Click the map to drop a pin</h4>
-          <h6 style="padding-left: 4em;">The pins location should be as close as possible to the actual location of the street art. We want to know
+          <h6 style="padding-left: 3em;">The pins location should be as close as possible to the actual location of the street art. We want to know
             what side of the building the piece is on. Be specific!</h5>
         </div>
       </div>
     </section>
 
-    <section class="ftco-section-2" style="margin-bottom: 4rem;">
-
+    <section class="ftco-section-2">
+      <div class="container-fluid p-0" style="height:33vh;">
       <div class="row no-gutters mx-4">
         <div class="col-6">
         <h4>2 - Choose Image</h4>
-          <form action="POST" enctype="multipart/form-data" id="file">
-          <input type="file" accept="image/*" name="photo" class="btn btn-outline-success">
+          <form action="POST" enctype="multipart/form-data" id="file" style="padding-left: 3em;">
+          <input type="file" accept="image/*" name="photo" class="btn btn-sm btn-outline-success mb-4" style=" width:80%;">
         </form>
         <h4 class="mr-2">3 - Submit results!</h4>
-        <button id="submit" class="btn btn-outline-success">Submit</button>
+        <button id="submit" class="btn btn-md btn-outline-success" style="margin-left: 3em;">Submit</button>
         </div>
 
         <div class="col-6">
@@ -145,11 +114,9 @@
           style="max-width: 250px;">
         </div>
       </div>
-
+      </div>
     </section>
-    <section class="ftco-section-3">
-      <h4>s</h4>
-    </section>
+   
 
     <footer class="ftco-footer ftco-bg-dark ftco-section" style="padding: 2em 0;">
       <div class="container px-md-5">
@@ -169,7 +136,7 @@
       </div>
     </footer>
   </div><!-- END COLORLIB-MAIN -->
-</div><!-- END COLORLIB-PAGE -->
+
 
 <!-- loader -->
 <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
