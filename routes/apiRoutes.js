@@ -53,11 +53,22 @@ module.exports = app => {
 
             });
 
-
         } else {
             throw "error";
         }
     });
+
+    app.delete("/api/:id", (req, res) => {
+        db.Image.destroy({
+            where: {
+                id: req.params.id
+            }
+        }).then(response => {
+            console.log(response);
+            res.json(success);
+        });
+    });
+
 
     // register route
     app.post("/register", async(req, res) => {

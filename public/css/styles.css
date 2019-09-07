@@ -49,6 +49,23 @@ h1#map-head {
     font-weight: 700;
 }
 
+.outer {
+    width: 80%;
+    height: 10rem;
+    border: 3px solid rgba(55, 85, 35, 0.4);
+    margin: 10px auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+#del-form {
+    padding: 0 4px;
+}
+
+#del-id {
+    width: 70%;
+}
+
 @media only screen and (max-width: 640px) {
     .summary_div {
         margin-left: 40px;
