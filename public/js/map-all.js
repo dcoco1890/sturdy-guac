@@ -1,10 +1,9 @@
 let markers = [];
 let img = $("#preview");
-
+let pageLat = $("#lat");
+let pageLong = $("#long");
 
 function initAutocomplete(arr) {
-
-
 
     let myOptions = {
         zoom: 12,
@@ -28,16 +27,17 @@ function initAutocomplete(arr) {
         var marker = new google.maps.Marker({
             position: new google.maps.LatLng(parseFloat(local.lat), parseFloat(local.long)),
             map: map,
-            custom: `/api/${local.id}`
+            custom: `/api/${local.id}`,
+            lat: local.lat,
+            long: local.long
 
         });
-        // var infowindow = new google.maps.InfoWindow({
-        //     content: `${local.id}`
-        // });
 
+        // click listener for markers, changes img src on page to api/id, and lat and long on page
         marker.addListener("click", function() {
-            // infowindow.open(map, marker);
             img.attr("src", this.custom);
+            pageLat.text(this.lat);
+            pageLong.text(this.long);
         });
     });
 
@@ -84,25 +84,6 @@ function initAutocomplete(arr) {
         });
         map.fitBounds(bounds);
     });
-}
-
-function placeMarkerAndPanTo(latLng, name, html, map) {
-
-    let contentString = "";
-    let marker = new google.maps.Marker({
-        position: latLng,
-        map: map
-    });
-    google.maps.event.addListener(marker, "click", function() {
-        infowindow.setContent(contentString);
-        infowindow.open(map, marker);
-        markers.push(marker);
-    });
-    google.maps.event.trigger(marker, "click");
-
-    map.panTo(latLng);
-
-    return marker;
 }
 
 function setMapOnAll(map) {

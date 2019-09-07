@@ -1,37 +1,5 @@
-<div id="colorlib-page">
-	<a href="#" class="js-colorlib-nav-toggle colorlib-nav-toggle"><i></i></a>
-
-	<aside id="colorlib-aside" role="complementary" class="js-fullheight text-center">
-		<h1 id="colorlib-logo"><a href="/mapupload"><span class="flaticon-camera"></span>sKreet Art</a></h1>
-		<nav id="colorlib-main-menu" role="navigation">
-			<ul>
-				<li><a href="/">Home</a></li>
-				<li class="colorlib-active"><a href="/gallery">Gallery</a></li>
-				<li><a href="/map">Map</a></li>
-				<li><a href="/upload">Upload</a></li>
-			</ul>
-		</nav>
-
-		<div class="colorlib-footer">
-			<h3>Check out our Repo!</h3>
-			<div class="d-flex justify-content-center">
-				<ul class="d-flex align-items-center">
-
-					<li class="d-flex align-items-center jusitfy-content-center"><a
-							href="https://github.com/dcoco1890/sturdy-guac" target="_blank"><i
-								class="icon-github"></i></a></li>
-				</ul>
-			</div>
-		</div>
-	</aside>
-	<!-- END COLORLIB-ASIDE -->
-
-
-
-	<div id="colorlib-main">
-
-
-		<section class="ftco-section-2">
+<div id="colorlib-main">
+	<section class="ftco-section-2">
 			<div class="photograhy">
 				<div class="row no-gutters">
 					<!--start pics here -->
@@ -42,8 +10,8 @@
 							style="background-image: url(/api/{{this.id}})">
 							<div class="overlay"></div>
 							<div class="text text-center">
-								<h3>Lost Art 01</h3>
-								<span class="tag">Gilmer St &#38; W Clay St</span>
+								<h3>{{this.name}}</h3>
+								<span class="tag">Lat: {{this.lat}} Long: {{this.long}}</span>
 							</div>
 						</a>
 					</div>
@@ -51,51 +19,10 @@
 				</div>
 		</section>
 
-		<footer class="ftco-footer ftco-bg-dark ftco-section">
+		<footer class="ftco-footer ftco-bg-dark ftco-section text-center">
 			<div class="container px-md-5">
-				<div class="row mb-5">
-					<div class="col-md">
-						<div class="ftco-footer-widget mb-4 ml-md-4">
-							<h2 class="ftco-heading-2">Category</h2>
-							<ul class="list-unstyled categories">
-								<li><a href="#">Photography <span>(6)</span></a></li>
-								<li><a href="#">Fashion <span>(8)</span></a></li>
-								<li><a href="#">Technology <span>(2)</span></a></li>
-								<li><a href="#">Travel <span>(2)</span></a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-md">
-						<div class="ftco-footer-widget mb-4">
-							<h2 class="ftco-heading-2">Archives</h2>
-							<ul class="list-unstyled categories">
-								<li><a href="#">November 2018 <span>(105)</span></a></li>
-								<li><a href="#">October 2018 <span>(212)</span></a></li>
-								<li><a href="#">September 2018 <span>(150)</span></a></li>
-								<li><a href="#">August 2018 <span>(100)</span></a></li>
-								<li><a href="#">July 2018 <span>(200)</span></a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-md">
-						<div class="ftco-footer-widget mb-4">
-							<h2 class="ftco-heading-2">Have a Questions?</h2>
-							<div class="block-23 mb-3">
-								<ul>
-									<li><span class="icon icon-map-marker"></span><span class="text">203 Fake St.
-											Mountain View, San Francisco, California, USA</span></li>
-									<li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929
-												210</span></a></li>
-									<li><a href="#"><span class="icon icon-envelope"></span><span
-												class="text">info@yourdomain.com</span></a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
 				<div class="row">
 					<div class="col-md-12">
-
 						<p>
 							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 							Copyright &copy;
@@ -109,7 +36,7 @@
 			</div>
 		</footer>
 	</div><!-- END COLORLIB-MAIN -->
-</div><!-- END COLORLIB-PAGE -->
+
 
 <!-- loader -->
 <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
