@@ -50,6 +50,7 @@ module.exports = app => {
             }).then(success => {
                 console.log("image uploaded");
                 res.json(success);
+
             });
 
 
@@ -59,7 +60,7 @@ module.exports = app => {
     });
 
     // register route
-    app.post("/register", async (req, res) => {
+    app.post("/register", async(req, res) => {
 
         // hash the password provided by the user with bcrypt so that
         // we are never storing plain text passwords. This is crucial
@@ -86,7 +87,7 @@ module.exports = app => {
     });
 
     // login route
-    app.post("/login", async (req, res) => {
+    app.post("/login", async(req, res) => {
         const { username, password } = req.body;
 
         // if the username / password is missing, we use status code 400
@@ -111,7 +112,7 @@ module.exports = app => {
     });
 
     // logout route
-    app.delete("/logout", async (req, res) => {
+    app.delete("/logout", async(req, res) => {
 
         console.log(req.headers.cookie);
 
@@ -133,9 +134,7 @@ module.exports = app => {
         // if the user missing, the user is not logged in, hence we
         // use status code 400 indicating a bad request was made
         // and send back a message
-        return res.status(400).send(
-            { errors: [{ message: "not authenticated" }] }
-        );
+        return res.status(400).send({ errors: [{ message: "not authenticated" }] });
     });
 
     // me route - get the currently logged in user
@@ -143,9 +142,7 @@ module.exports = app => {
         if (req.user) {
             return res.send(req.user);
         }
-        res.status(404).send(
-            { errors: [{ message: "missing auth token" }] }
-        );
+        res.status(404).send({ errors: [{ message: "missing auth token" }] });
     });
 
 };

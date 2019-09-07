@@ -6,6 +6,9 @@ var $submitBtn = $("#submit");
 var preview = $("#preview");
 var fileInput = $("input[type=\"file\"]");
 var sure = $("#u-sure");
+let mod = $("#myModal");
+let titleMod = $("#title-modal");
+let bodyMod = $("#body-modal");
 let lat;
 let long;
 let pickedPosition = false;
@@ -133,9 +136,13 @@ initAutocomplete();
 function imageSubmit(e) {
     e.preventDefault();
     if (!pickedPosition) {
-        sure.text("You must pick a spot on the map!");
+        titleMod.text("Error");
+        bodyMod.text("You must pick a spot on the map");
+        mod.modal();
     } else if (!pickedImage) {
-        sure.text("You need to select an image!");
+        titleMod.text("Error");
+        bodyMod.text("No image selected");
+        mod.modal();
     } else {
 
         setTimeout(reload, 3000);
@@ -157,13 +164,17 @@ function imageSubmit(e) {
             timeout: 600000,
             success: function(data) {
 
-                $("#result").text(`Success! ${data.name} was uploaded`);
+                mod.modal();
+                titleMod.text("Success!");
+                bodyMod.text("Your image was loaded");
+
                 console.log("SUCCESS : ", data);
                 $submitBtn.prop("disabled", false);
             },
             error: function(e) {
 
-                $("#result").text("Needs to be JPG or PNG");
+                titleMod.text("Error");
+                mod.modal();
                 console.log("ERROR : ", e);
                 $submitBtn.prop("disabled", false);
             }
