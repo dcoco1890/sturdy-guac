@@ -4,7 +4,18 @@ module.exports = app => {
 
     // home page
     app.get("/", (req, res) => {
-        res.render("index");
+        // db.User.findAndCountAll({}).then(dbUsers => {
+        // console.log(dbUsers.rows[0].dataValues.username);
+        res.render("index", {
+            // user: dbUsers.rows[0].dataValues.username
+        });
+    });
+
+    // registration page
+    app.get("/register", (req, res) => {
+        res.render("index", {
+            user: req.user
+        });
     });
     
     // upload page
