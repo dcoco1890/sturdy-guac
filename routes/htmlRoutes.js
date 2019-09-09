@@ -11,13 +11,17 @@ module.exports = app => {
         });
     });
 
+    app.get("/remove", (req, res) => {
+        res.render("remove");
+    });
+
     // registration page
     app.get("/register", (req, res) => {
         res.render("index", {
             user: req.user
         });
     });
-    
+
     // upload page
     app.get("/upload", (req, res) => {
         res.render("map-upload");
@@ -60,7 +64,7 @@ module.exports = app => {
     app.get("*", (req, res) => {
         res.render("404");
     });
-    
+
     // future project, render specific marker from DB
     // app.get("/map/:id", (req, res) => {
     //     db.Image.findOne({ where: { id: req.params.id } }).then(dbImage => {
