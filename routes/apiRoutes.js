@@ -59,14 +59,23 @@ module.exports = app => {
     });
 
     app.delete("/api/:id", (req, res) => {
-        db.Image.destroy({
-            where: {
-                id: req.params.id
+        let id = req.params.id;
+        db.Image.findAndCountAll({}).then(response => {
+            if (id < response.count) {
+                db.Image.destroy({
+                    where: {
+                        id: id
+                    }
+                }).then(response => {
+                    console.log(response);
+                    res.json(response);
+                });
+            } else {
+                throw "error";
             }
-        }).then(response => {
-            console.log(response);
-            res.json(success);
         });
+
+
     });
 
 
